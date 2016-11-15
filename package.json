@@ -1,0 +1,12 @@
+{
+  "name": "web-component",
+  "version": "0.0.0",
+  "description": "Ejemplo web component",
+  "main": "index.html",
+  "author": "Alberto gonzalez novella",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-server-livereload": "^1.9.0"
+  }
+}

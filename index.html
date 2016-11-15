@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Example web component</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="import" href="component/meme.html">
+  </head>
+  <body>
+    <select id="sel" name="Images" form="Images">
+      <option value="images/1.jpg">Jesús</option>
+      <option value="images/2.jpg">Fray</option>
+      <option value="images/3.jpg">Dino</option>
+      <option value="images/4.jpg">Koala</option>
+      <option value="images/5.jpg">Borracho</option>
+    </select>
+    <br>
+    <br>
+    <input id="text" type="text" placeholder="Introduzca un texto">
+    <br>
+    <br>
+    <hr>
+    <br>
+    <ag-meme 
+      id="meme"
+      data-name="meme" 
+      data-img="images/4.jpg"
+      data-texto="">
+    </ag-meme>
+    <script>
+    (function(){
+      var meme = document.querySelector('#meme');
+      var select = document.querySelector('#sel');
+
+      select.addEventListener('change',function(){
+          var newValue = select.options[select.selectedIndex].value;    
+          meme.setAttribute("data-img",newValue);
+      });
+
+      var texto = document.querySelector('#text');
+      texto.addEventListener('change',function(){
+          var newValue = texto.value;
+          meme.setAttribute("data-texto",newValue);
+      });
+    })();
+     
+    </script>
+
+  </body>
+</html>

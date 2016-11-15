@@ -1,0 +1,52 @@
+<script>
+class AGMeme extends HTMLElement {
+  constructor() {
+    super();
+    var shadow = this.attachShadow({mode: 'open'});
+    shadow.innerHTML = `
+    <style>
+      .image { 
+        position: relative; 
+        width: 100%;
+      }
+      .texto { 
+        position: absolute; 
+        top: 150px;
+        color:azure; 
+        left: 5px; 
+        width: 100%; 
+      }
+    </style>`;
+
+    var div = document.createElement('div');
+    div.className += "image";
+
+    var img = document.createElement('img');
+    img.alt = this.getAttribute('data-name');
+    img.src = this.getAttribute('data-img');
+    img.width = '200';
+    img.height = '200';
+
+    var h2 = document.createElement('h2');
+    h2.innerHTML = this.getAttribute('data-texto');
+    h2.className += "texto";
+
+    div.appendChild(img);
+    div.appendChild(h2);
+    shadow.appendChild(div);
+  }
+  attributeChangedCallback(attr, oldValue, newValue) {
+    console.log(attr);
+    if(attr === 'data-img'){
+      this.shadowRoot.querySelector('img').src = newValue;
+    }
+    if( attr === 'data-texto'){
+      this.shadowRoot.querySelector('h2').textContent = newValue;
+    }      
+  }
+  static get observedAttributes() {return ['data-img','data-texto']; }
+}
+customElements.define('ag-meme', AGMeme);
+</script>  
+
+
